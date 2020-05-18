@@ -1,6 +1,7 @@
 import Character_Sheet as cha
 paladin = cha.loadClass("test")
-print(paladin)
+erika = cha.Player(1000,10,[])
+print(erika.returnLevel())
 
 
 
