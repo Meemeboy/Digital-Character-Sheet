@@ -2,25 +2,45 @@ hitdice
 saving throws (0-5)
 proficencies(for class building), abilities(organise in a 2D array with a separate row for each level)
 1
+playeractions
 2
+playeractions
 3
+playeractions
 4
+playeractions
 5
+playeractions
 6
+playeractions
 7
+playeractions
 8
+playeractions
 9
+playeractions
 10
+playeractions
 11
+playeractions
 12
+playeractions
 13
+playeractions
 14
+playeractions
 15
+playeractions
 16
+playeractions
 17
+playeractions
 18
+playeractions
 19
-20 , spells(organise in a 2D array with a separate row for each level)
+playeractions
+20
+playeractions                                                                        , spells(organise in a 2D array with a separate row for each level)
 1
 2
 3
@@ -30,3 +50,7 @@ proficencies(for class building), abilities(organise in a 2D array with a separa
 7
 8
 9
+
+
+A = AC
+H = weapon to hit
