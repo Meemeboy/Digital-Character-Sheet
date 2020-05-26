@@ -37,9 +37,11 @@ class Player:
       level = level + 1
     return level
   def showAbilities(self):
+    print("\n")
     for i in range(self.returnLevel()):
-      print(self.pc.abilities[i])
-      print("\n")
+      for x in range(len(self.pc.abilities[i])):
+        print(self.pc.abilities[i][x])
+        print("\n")
     print(self.pc.abilities[20])
   def levelStat(self):
     print("1-Strength \n2-Dexterity \n3-Constitution \n4-Intelligence \n5-Wisdom \n6-Charisma")
