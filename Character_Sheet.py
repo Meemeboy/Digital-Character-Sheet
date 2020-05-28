@@ -1,4 +1,5 @@
-
+import time
+import json
 class PlayerClass:
   def __init__(self,hitdice,saving,skills,abilities,spells,playerchoice): ## add subclass
     self.hitdice = hitdice
@@ -49,6 +50,9 @@ class Player:
     choice2 = int(input("What stat would you like to increase?"))
     self.stats[choice1 - 1]= self.stats[choice1 - 1] + 1
     self.stats[choice2 - 1]= self.stats[choice2 - 1] + 1
+  def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
 
   def levelUp(self,level):
     print(self.pc.abilities[level-1])
@@ -57,8 +61,10 @@ class Player:
         print("\n")
     if self.pc.playerchoice[level-1][0] == "CHS1":
       choices = 1
+    else:
+      choices = 0
     for i in range(choices):
-      choice = int(input("Please select an option from the above choices"))
+      choice = int(input("Please select an option from the above choices(num)"))
       if self.pc.playerchoice[level-1][choice][0] == "A":
         mod = int(self.pc.playerchoice[level-1][choice][2])
         self.acMod = self.acMod + mod
@@ -97,5 +103,5 @@ def createClass():
     raise TypeError
 
 
-    
+
 ##ABILITY LAYOUT, 2d Array for each level
