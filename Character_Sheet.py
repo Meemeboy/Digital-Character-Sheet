@@ -10,8 +10,9 @@ class PlayerClass:
     mods = [0,0,0,0,0,0]
 
 class Subclass:
-  def __init__(self):
-    return True
+  def __init__(self,abilities,spells):
+    self.abilities = abilities
+    self.spells = spells
 
 
 class Race:
@@ -76,6 +77,15 @@ class Player:
 
 
 
+def loadSubclass(filename):
+  with open(filename,"r") as f:
+    subabilities = []
+    spells = []
+    for i in range(5):
+      subabilities.append(f.readline().split("£"))
+    for i in range(9):
+      spells.append(f.readline().split("£"))
+  return Subclass(subabilities,spells)
 
 
 def loadClass(filename):
