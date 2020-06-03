@@ -1,21 +1,15 @@
 import Character_Sheet as cha
-paladin = cha.loadClass("test")
-erika = cha.Player(1000,10,[10,10,10,10,10,10],paladin,"test",[0,0,0,0,0,0])
-devo = cha.loadSubclass("subclass test")
-print(devo.abilities)
+paladin = cha.loadClass("Paladin/test")
+erika = cha.Player(3000,10,[10,10,10,10,10,10],paladin,"test",[0,0,0,0,0,0],None)
+subclasses = cha.loadSubclass("Paladin/subclasses")
+
 '''
 s = erika.toJSON()
 with open("saves","w") as f:
   f.write(s)
 
 
-
-print(erika.returnLevel())
-erika.levelUp(2)
-erika.levelStat()
-erika.showAbilities()
 '''
-
-
-
+erika.levelUp(3,subclasses)
+erika.showAbilities()
 

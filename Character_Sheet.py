@@ -1,5 +1,6 @@
 import time
 import json
+import os
 class PlayerClass:
   def __init__(self,hitdice,saving,skills,abilities,spells,playerchoice): ## add subclass
     self.hitdice = hitdice
@@ -20,7 +21,7 @@ class Race:
     self.ability = ability
 
 class Player:
-  def __init__(self,xp,hp,stats,pc,race,statsmod):
+  def __init__(self,xp,hp,stats,pc,race,statsmod,subclass):
     self.xp = xp
     self.hp = hp
     self.pc = pc
@@ -55,7 +56,13 @@ class Player:
         return json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4)
 
-  def levelUp(self,level):
+  def levelUp(self,level,subclasses):
+    if level == 3:
+      yeet = os.listdir("Paladin/subclasses")## replace with correct class
+      print(yeet)
+      choice = int(input("Please select which subclass from the above choice"))
+      self.subclass = subclasses[choice-1]
+      self.pc.abilities[2].append(self.subclass.abilities[0])
     print(self.pc.abilities[level-1])
     for i in self.pc.playerchoice[level-1]:
         print(i)
@@ -77,15 +84,20 @@ class Player:
 
 
 
-def loadSubclass(filename):
-  with open(filename,"r") as f:
-    subabilities = []
-    spells = []
-    for i in range(5):
-      subabilities.append(f.readline().split("£"))
-    for i in range(9):
-      spells.append(f.readline().split("£"))
-  return Subclass(subabilities,spells)
+def loadSubclass(dir):
+  subclasses = []
+  for i in os.listdir(dir):
+    print("Loading",i)
+    with open("Paladin/subclasses/"+i,"r") as f: ## replace paladin with class
+      subabilities = []
+      spells = []
+      for i in range(5):
+        subabilities.append(f.readline().split("£"))
+      for i in range(9):
+        spells.append(f.readline().split("£"))
+      subclasses.append(Subclass(subabilities,spells))
+  print("\n")
+  return subclasses
 
 
 def loadClass(filename):
