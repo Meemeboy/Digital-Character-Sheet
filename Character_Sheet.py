@@ -82,10 +82,11 @@ class Player:
         self.pc.abilities[20].append(self.pc.playerchoice[level-1][choice])
 
 class Spell:
-  def __init__(self,name,casttime,range,components,duration,level,ability):
+  def __init__(self,name,casttime,components,ability,duration,level,srange,school):
     self.name = name
     self.casttime = casttime
-    self.range = range
+    self.range = srange
+    self.school = school
     self.components= components
     self.duration = duration
     self.level = level
@@ -97,10 +98,12 @@ def loadSpells():
     yeet = json.loads(f.read())
     f.close()
   for x,y in yeet.items():
-    time.sleep(0.1)
-    print(x)
-    spelllist.append(x)
-  return x
+    spellyeet = []
+    spellyeet.append(x)
+    for j,l in y.items():
+      spellyeet.append(l)
+    spelllist.append(Spell(spellyeet[0],spellyeet[1],spellyeet[2],spellyeet[3],spellyeet[4],spellyeet[5],spellyeet[6],spellyeet[7]))
+  return spelllist
 
 
 def loadSubclass(directory,classname):

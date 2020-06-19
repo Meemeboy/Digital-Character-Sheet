@@ -1,4 +1,5 @@
 import Character_Sheet as cha
+import random
 '''
 paladin = cha.loadClass("Classes/Paladin/test")
 erika = cha.Player(3000,10,[10,10,10,10,10,10],paladin,"test",[0,0,0,0,0,0],None)
@@ -15,4 +16,5 @@ erika.levelUp(3,subclasses)
 erika.showAbilities()
 
 '''
-cha.loadSpells()
+test = cha.loadSpells()
+print(test[random.randint(1,100)].name)
