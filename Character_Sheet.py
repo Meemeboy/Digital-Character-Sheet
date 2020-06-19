@@ -81,6 +81,26 @@ class Player:
       if self.pc.playerchoice[level-1][choice][0] == "Z":
         self.pc.abilities[20].append(self.pc.playerchoice[level-1][choice])
 
+class Spell:
+  def __init__(self,name,casttime,range,components,duration,level,ability):
+    self.name = name
+    self.casttime = casttime
+    self.range = range
+    self.components= components
+    self.duration = duration
+    self.level = level
+    self.ability = ability
+
+def loadSpells():
+  spelllist = []
+  with open("spells.json") as f:
+    yeet = json.loads(f.read())
+    f.close()
+  for x,y in yeet.items():
+    time.sleep(0.1)
+    print(x)
+    spelllist.append(x)
+  return x
 
 
 def loadSubclass(directory,classname):
@@ -120,7 +140,7 @@ def loadClass(filename):
 
 def createClass():
   try:
-    hitdice = int(input(""))
+    hitdice = int(input("input the class' hitdice(e.g.6"))
   except:
     raise TypeError
 
