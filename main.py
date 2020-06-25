@@ -17,4 +17,5 @@ erika.showAbilities()
 
 '''
 test = cha.loadSpells()
-print(test[random.randint(1,100)].name)
+print(len(test))
+print(test[125].ability)
