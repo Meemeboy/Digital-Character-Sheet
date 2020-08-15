@@ -18,6 +18,7 @@ class Subclass:
 class Race:
   def __init__(self,bonus,ability):
     self.ability = ability
+    self.bonus = bonus
 
 class Player:
   def __init__(self,xp,hp,stats,pc,race,statsmod,subclass):
@@ -146,6 +147,8 @@ def createClass():
     hitdice = int(input("input the class' hitdice(e.g.6"))
   except:
     raise TypeError
+
+
 
 
 
