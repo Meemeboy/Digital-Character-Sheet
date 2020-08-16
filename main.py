@@ -38,9 +38,11 @@ def createStats():
       points = points - choice
       stats[i] = stats[i] + choice
       if stats[i] >= 15:
-        print("Stat is equal to 15")
+        print("Stat cannot be above 15")
         points = points + choice
         stats[i] = stats[i] - choice
+        print("You have ",points," points")
+        print("You have ",stats[i],"points in ",statName)
         continue
       print("You have ",points," points")
       print("You have ",stats[i],"points in ",statName)
