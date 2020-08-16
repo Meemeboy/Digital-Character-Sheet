@@ -46,6 +46,7 @@ def createStats():
         continue
       print("You have ",points," points")
       print("You have ",stats[i],"points in ",statName)
+  return stats
 
 
 
