@@ -11,7 +11,42 @@ def loadClasses():
       raise OSError(filename)
   return classArray
 
+def createStats():
+  stats = [8,8,8,8,8,8]
+  points = 27
+  print("Please allocate points for your main 6 abilities")
+  while points > 0:
+    for i in range(len(stats)):
+      if i == 0:
+        statName = "Strength"
+      if i == 1:
+        statName = "Dexterity"
+      if i == 2:
+        statName = "Constitution"
+      if i == 3:
+        statName = "Intelligence"
+      if i == 4:
+        statName = "Wisdom"
+      if i == 5:
+        statName = "Charisma"
+      while True:
+        choice = int(input("What would you like to add in " + statName))
+        if choice > points:
+          print("Not enoigh points")
+        else:
+          break
+      if stats[i] >= 15:
+        print("Stat is equal to 15")
+        continue
+      points = points - choice
+      stats[i] = stats[i] + choice
+      print("You have ",points," points")
+      print("You have ",stats[i],"points in ",statName)
+
+
+
 def characterCreate(classes):
+  xp = 0
   print("please choose from the following classes")
   ##display array of loaded classes
   count = 0
@@ -20,6 +55,9 @@ def characterCreate(classes):
     print(str(count)+" " + i.name)##prints loaded classes
   choice = int(input(""))
   pc = classes[choice - 1]
+  hp = pc.hitdice
+  stats = createStats()
+
   ##return cha.Player(xp,hp,stats,pc,race,statsmod,subclass)
 
 
