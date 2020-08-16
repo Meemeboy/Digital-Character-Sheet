@@ -35,11 +35,13 @@ def createStats():
           print("Not enoigh points")
         else:
           break
-      if stats[i] >= 15:
-        print("Stat is equal to 15")
-        continue
       points = points - choice
       stats[i] = stats[i] + choice
+      if stats[i] >= 15:
+        print("Stat is equal to 15")
+        points = points + choice
+        stats[i] = stats[i] - choice
+        continue
       print("You have ",points," points")
       print("You have ",stats[i],"points in ",statName)
 
