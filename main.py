@@ -1,5 +1,5 @@
 import Character_Sheet as cha
-import os, random
+import os, random,pickle
 
 
 def loadClasses():
@@ -30,6 +30,7 @@ def createStats():
       if i == 5:
         statName = "Charisma"
       while True:
+        print("You have",stats[i],"points in ",statName)
         choice = int(input("What would you like to add in " + statName))
         if choice > points:
           print("Not enoigh points")
@@ -37,7 +38,7 @@ def createStats():
           break
       points = points - choice
       stats[i] = stats[i] + choice
-      if stats[i] >= 15:
+      if stats[i] > 15:
         print("Stat cannot be above 15")
         points = points + choice
         stats[i] = stats[i] - choice
@@ -46,6 +47,8 @@ def createStats():
         continue
       print("You have ",points," points")
       print("You have ",stats[i],"points in ",statName)
+      if points == 0:
+        break
   return stats
 
 
@@ -61,9 +64,35 @@ def characterCreate(classes):
   choice = int(input(""))
   pc = classes[choice - 1]
   hp = pc.hitdice
-  stats = createStats()
+  while True:
+    stats = createStats()
+    choice1 = input("Are you happy with these stats?(Y/N)")
+    for i in stats:
+      print(i)
+    if choice1 == "Y":
+      break
+  name = input("What is your characters name?")
+  return cha.Player(xp,hp,stats,pc,"Replace",[0,0,0,0,0,0],None,[],name)
 
-  ##return cha.Player(xp,hp,stats,pc,race,statsmod,subclass)
+def saveCharacter(obj):
+  with open("Saves/" + obj.name,"wb") as f:
+    pickle.dump(obj,f)
+
+def loadCharacter():
+  count = 0
+  dirlist = []
+  for filename in os.listdir("Saves"):
+    count = count + 1
+    print(str(count) +"-"+ filename)
+    dirlist.append(filename)
+  choice = int(input("Please input which character to load(1-" + str(len(dirlist)) + ")"))
+  choicef = dirlist[choice-1]
+  with open("Saves/" + choicef,"rb") as f:
+    loadedCha = pickle.load(f)
+  return loadedCha
+
+    
+    
 
 
 '''
@@ -87,5 +116,8 @@ print(len(test))
 print(test[125].ability)
 '''
 
-test = loadClasses()
-characterCreate(test)
+spellsCache = cha.loadSpells() ##caches the loaded spells
+classCache = loadClasses()
+testC = characterCreate(classCache)
+saveCharacter(testC)
+e = loadCharacter()

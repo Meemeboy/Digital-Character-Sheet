@@ -21,7 +21,8 @@ class Race:
     self.bonus = bonus
 
 class Player:
-  def __init__(self,xp,hp,stats,pc,race,statsmod,subclass):
+  def __init__(self,xp,hp,stats,pc,race,statsmod,subclass,inventory,name):
+    self.name = name
     self.xp = xp
     self.hp = hp
     self.pc = pc
@@ -31,6 +32,7 @@ class Player:
     self.acMod = 0
     self.toHit = 0
     self.toHitMod = 0
+    self.inventory = inventory
   def returnLevel(self): ##return total level
     level = 0
     xpamounts = [0,300,900,2700,6500,14000,23000,34000,48000,64000,85000,100000,120000,140000,165000,195000,225000,265000,305000,355000]
