@@ -145,7 +145,8 @@ CharacterInstance = loadCharacter()
 CharacterInstance.levelUp(2, subclasses)
 saveCharacter(CharacterInstance)
 print("Character level is " , CharacterInstance.returnLevel())
-print("All spells at this level are " , CharacterInstance.returnSpells(spellsCache))
+currentSpells = CharacterInstance.returnSpells(spellsCache)
+print(currentSpells[1].ability)
 
 ##if __name__ == "__main__":
   ##CharacterSheet().run()

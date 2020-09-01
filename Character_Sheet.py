@@ -107,11 +107,19 @@ class Player:
         j = j[:-1]
         j = j.replace("_"," ")
         outspells.append(j)
+    '''
     for i in outspells:
       for j in spellslist:
         if i == j.name:
           print("replacing ", i, " with ", j.name)
-          i = j
+          outspells[count] = j
+          continue
+      count += 1
+    '''
+    for i in outspells:
+      outspells[count] = spellslist.get(i,None)
+      print(outspells[count])
+      count += 1
     ##find the object for each spell and add it to array instead of string
     return outspells
 
@@ -127,7 +135,7 @@ class Spell:
     self.ability = ability
 
 def loadSpells():
-  spelllist = []
+  spelllist = {}
   with open("spells.json", encoding = "utf-8") as f:
     yeet = json.loads(f.read())
     f.close()
@@ -136,7 +144,7 @@ def loadSpells():
     spellyeet.append(x)
     for j,l in y.items():
       spellyeet.append(l)
-    spelllist.append(Spell(spellyeet[0],spellyeet[1],spellyeet[2],spellyeet[3],spellyeet[4],spellyeet[5],spellyeet[6],spellyeet[7]))
+    spelllist[spellyeet[0]] = Spell(spellyeet[0],spellyeet[1],spellyeet[2],spellyeet[3],spellyeet[4],spellyeet[5],spellyeet[6],spellyeet[7]) ##Initialises spells and creates key pairs
   return spelllist
 
 
