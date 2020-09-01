@@ -7,6 +7,7 @@ class PlayerClass:
     self.skills = skills
     self.abilities = abilities
     self.playerchoice = playerchoice
+    self.spells = spells
     mods = [0,0,0,0,0,0]
 
 class Subclass:
@@ -19,6 +20,10 @@ class Race:
   def __init__(self,bonus,ability):
     self.ability = ability
     self.bonus = bonus
+
+class Item:
+  def __init__(self,description):
+    self.description = description
 
 class Player:
   def __init__(self,xp,hp,stats,pc,race,statsmod,subclass,inventory,name):
@@ -35,7 +40,7 @@ class Player:
     self.inventory = inventory
   def returnLevel(self): ##return total level
     level = 0
-    xpamounts = [0,300,900,2700,6500,14000,23000,34000,48000,64000,85000,100000,120000,140000,165000,195000,225000,265000,305000,355000]
+    xpamounts = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000,195000, 225000, 265000, 305000, 355000]
     for i in range(20):
       if self.xp < xpamounts[i]:
         break
@@ -57,8 +62,9 @@ class Player:
   def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4)
-
   def levelUp(self,level,subclasses):
+    xpamounts = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000,195000, 225000, 265000, 305000, 355000]
+    self.xp = xpamounts[level - 1]
     if level == 3:
       yeet = os.listdir("Classes/"+self.pc.name+"/subclasses")## replace with correct class
       print(yeet)
@@ -83,6 +89,31 @@ class Player:
         self.toHitMod = self.toHitMod + mod
       if self.pc.playerchoice[level-1][choice][0] == "Z":
         self.pc.abilities[20].append(self.pc.playerchoice[level-1][choice])
+  def returnSpells(self,spellslist):
+    highest = 0
+    spells = []
+    outspells = []
+    count = 0
+    level = self.returnLevel()
+    secondarySpell = [2,5,9,13,17]
+    for i in secondarySpell:
+      if level < i:
+        break
+      highest = secondarySpell.index(i)
+    for j in range(highest + 2):
+      spells.append(self.pc.spells[j])
+    for i in spells:
+      for j in i:
+        j = j[:-1]
+        j = j.replace("_"," ")
+        outspells.append(j)
+    for i in outspells:
+      for j in spellslist:
+        if i == j.name:
+          print("replacing ", i, " with ", j.name)
+          i = j
+    ##find the object for each spell and add it to array instead of string
+    return outspells
 
 class Spell:
   def __init__(self,name,casttime,components,ability,duration,level,srange,school):
@@ -113,7 +144,7 @@ def loadSubclass(directory,classname):
   subclasses = []
   for i in os.listdir(directory):
     print("Loading",i)
-    with open("Classes/"+classname+ "/subclasses/"+i,"r") as f: ## replace paladin with class
+    with open("Classes/"+classname+ "/subclasses/"+i,"r", encoding = "utf-8") as f: ## replace paladin with class
       subabilities = []
       spells = []
       for i in range(5):
@@ -138,7 +169,7 @@ def loadClass(filename):
     for i in range(20):
       abilities.append(f.readline().split("£"))
       playeractions.append(f.readline().split("£"))
-    for i in range(9):
+    for i in range(10):
       spells.append(f.readline().split("£"))
     abilities.append([])
     name = f.readline()

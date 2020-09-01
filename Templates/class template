@@ -41,6 +41,7 @@ playeractions
 playeractions
 20
 playeractions                                                                        , spells(organise in a 2D array with a separate row for each level)
+0
 1
 2
 3

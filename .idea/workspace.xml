@@ -10,6 +10,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Character_Sheet.py" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="1gk8eN1mpHVOY2MEscFdbUMeGFM" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -67,21 +70,21 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1598647944414" />
-    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1598739971154">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1598977950894">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598739971154" />
-    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1598739971154">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1598977950894" />
+    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1598977950894">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598739971154" />
-    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1598739971154">
+    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1598977950894" />
+    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1598977950894">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598739971154" />
-    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1598739971154">
+    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1598977950894" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1598977950894">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598739971154" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1598977950894" />
   </component>
 </project>
