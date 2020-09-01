@@ -1,0 +1,25 @@
+<MyGrid>
+    id:sheet
+    display: entry
+    rows:3
+    padding:10
+    spacing:10
+
+    GridLayout:
+        cols: 4
+        BoxLayout:
+            Label:
+                id: entry
+                text_size:self.size
+                font_size: 14
+
+        BoxLayout:
+            Button:
+                spacing:10
+                text:"Abilities Left"
+                on_press:root.showAbRight()
+        BoxLayout:
+            Button:
+                spacing:10
+                text:"Abilities Right"
+                on_press:root.showAbRight()

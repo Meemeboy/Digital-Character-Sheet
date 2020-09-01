@@ -41,13 +41,13 @@ class Player:
         break
       level = level + 1
     return level
-  def showAbilities(self):
-    print("\n")
+  def showAbilities(self):##returns array containing all abilities
+    output = []
     for i in range(self.returnLevel()):
       for x in range(len(self.pc.abilities[i])):
-        print(self.pc.abilities[i][x])
-        print("\n")
-    print(self.pc.abilities[20])
+        output.append(self.pc.abilities[i][x])
+    output.append(self.pc.abilities[20])
+    return output
   def levelStat(self):
     print("1-Strength \n2-Dexterity \n3-Constitution \n4-Intelligence \n5-Wisdom \n6-Charisma")
     choice1 = int(input("What stat would you like to increase?(1-6)"))
@@ -97,7 +97,7 @@ class Spell:
 
 def loadSpells():
   spelllist = []
-  with open("spells.json") as f:
+  with open("spells.json", encoding = "utf-8") as f:
     yeet = json.loads(f.read())
     f.close()
   for x,y in yeet.items():

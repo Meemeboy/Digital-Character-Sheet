@@ -1,5 +1,25 @@
 import Character_Sheet as cha
 import os, random,pickle
+import kivy
+from kivy.app import App
+from kivy.uix.label import Label
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.textinput import TextInput
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.properties import StringProperty
+
+class MyGrid(GridLayout):
+    ##self.display.text = self.outArray[self.posIndex]
+    pass
+
+
+
+class CharacterSheet(App):
+  def build(self):
+    return MyGrid()
+
+
 
 
 def loadClasses():
@@ -118,6 +138,9 @@ print(test[125].ability)
 
 spellsCache = cha.loadSpells() ##caches the loaded spells
 classCache = loadClasses()
-testC = characterCreate(classCache)
-saveCharacter(testC)
-e = loadCharacter()
+##testC = characterCreate(classCache)
+##saveCharacter(testC)
+CharacterInstance = loadCharacter()
+
+if __name__ == "__main__":
+  CharacterSheet().run()
