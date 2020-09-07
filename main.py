@@ -8,10 +8,51 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.properties import StringProperty
+from kivy.uix.slider import Slider
+from kivy.properties import ObjectProperty
 
 class MyGrid(GridLayout):
     ##self.display.text = self.outArray[self.posIndex]
-    pass
+    slidersp = ObjectProperty(None)
+    sliderab = ObjectProperty(None)
+    def showSpells(self):
+      print(self.slidersp.value)
+      text = ""
+      spellArray = CharacterInstance.returnSpells(spellsCache)
+      '''
+      for i in spellArray:
+        try:
+          text = text + i.name
+          text = text + ": "
+          text = text + i.ability
+        except:
+          pass
+        text = text + "\n"
+      '''
+      for i in spellArray:
+        try:
+          print("Spell level is ", i.level)
+          print("Slider value is ", int(self.slidersp.value))
+          if i.level == int(self.slidersp.value):
+            text = text + i.name
+            text = text + ": "
+            text = text + i.ability
+            text = text + i.level
+            text = text + "\n"
+        except:
+          pass
+      self.display.text = text
+    def showAbilities(self):
+      text = ""
+      abilityArray = CharacterInstance.showAbilities()
+      if int(self.sliderab.value) == 0:## add levels 1-4 etc
+        return None
+      for i in abilityArray[int(self.sliderab.value)]:
+        text = text + i
+        text = text + "\n"
+      self.display.text = text
+
+
 
 
 
@@ -112,7 +153,7 @@ def loadCharacter():
   return loadedCha
 
     
-    
+
 
 
 '''
@@ -141,12 +182,14 @@ spellsCache = cha.loadSpells() ##caches the loaded spells
 classCache = loadClasses()
 ##testC = characterCreate(classCache)
 ##saveCharacter(testC)
+
 CharacterInstance = loadCharacter()
 CharacterInstance.levelUp(2, subclasses)
 saveCharacter(CharacterInstance)
-print("Character level is " , CharacterInstance.returnLevel())
-currentSpells = CharacterInstance.returnSpells(spellsCache)
-print(currentSpells[1].ability)
+test = CharacterInstance.returnSpells(spellsCache)
+print(test)
+print(test[1].name)
 
-##if __name__ == "__main__":
-  ##CharacterSheet().run()
+
+if __name__ == "__main__":
+  CharacterSheet().run()

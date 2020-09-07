@@ -5,21 +5,76 @@
     padding:10
     spacing:10
 
+    slidersp: slidersp
+    sliderab: sliderab
+    canvas.before:
+        Color:
+            rgba: 0.5, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
     GridLayout:
-        cols: 4
+        rows: 3
+        GridLayout:
+            cols:3
+            rows_minimum: {0: 100, 1: 100, 2: 100}
+            size_hint: 0.5, 0.5
+            Label:
+                id: xp
+                text:"Xp"
+            Label:
+                id: hp
+                text:"HP"
+            Label:
+                id: name
+                text:"Name"
         BoxLayout:
             Label:
+                size: self.texture_size
                 id: entry
                 text_size:self.size
                 font_size: 14
+                valign: "top"
+                haligh: "middle"
 
-        BoxLayout:
+        GridLayout:
+            cols: 3
+            cols_minimum: {0: 100, 1: 100, 2: 100, 3: 30, 4:30, 5:30}
+            size_hint: 0.5, 0.5
             Button:
                 spacing:10
-                text:"Abilities Left"
-                on_press:root.showAbRight()
-        BoxLayout:
+                text:"Abilities"
+                on_press: root.showAbilities()
             Button:
                 spacing:10
-                text:"Abilities Right"
-                on_press:root.showAbRight()
+                text:"Spells"
+                id: spells
+                on_press: root.showSpells()
+            Button:
+                spacing:10
+                id: equipment
+                text:"Equipment"
+            GridLayout:
+                rows: 2
+                Label:
+                    text: "Level: " + str(sliderab.value - 3) + " - " + str(sliderab.value)
+                Slider:
+                    id: sliderab
+                    min: 0
+                    max: 20
+                    step: 4
+                    orientation: 'horizontal'
+            GridLayout:
+                rows: 2
+                Label:
+                    text: "Level: " + str(slidersp.value)
+                Slider:
+                    id: slidersp
+                    min: 0
+                    max: 9
+                    step: 1
+                    orientation: 'horizontal'
+            Button:
+                id:exit
+                spacing:10
+                text: "exit"

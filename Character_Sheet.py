@@ -49,8 +49,7 @@ class Player:
   def showAbilities(self):##returns array containing all abilities
     output = []
     for i in range(self.returnLevel()):
-      for x in range(len(self.pc.abilities[i])):
-        output.append(self.pc.abilities[i][x])
+      output.append(self.pc.abilities[i])
     output.append(self.pc.abilities[20])
     return output
   def levelStat(self):
