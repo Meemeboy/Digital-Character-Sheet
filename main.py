@@ -12,8 +12,10 @@ from kivy.uix.slider import Slider
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import ScreenManager,Screen
 from kivy.lang.builder import Builder
+from kivy.graphics.svg import Svg
 
 global sm
+global CharacterInstance
 
 class MyGrid(Screen):
     ##self.display.text = self.outArray[self.posIndex]
@@ -107,6 +109,7 @@ class MenuScreen(Screen):
       pass
     if chartemp != None:
       with open("Saves/" + chartemp,"rb") as f:
+        global CharacterInstance
         CharacterInstance = pickle.load(f)
         print("Loaded", CharacterInstance)
         sm.current = 'sheet'
@@ -116,7 +119,7 @@ class MenuScreen(Screen):
 
 class CharacterSheet(App):
 
-  
+
 
   def build(self):
     global sm
