@@ -10,8 +10,12 @@ from kivy.uix.button import Button
 from kivy.properties import StringProperty
 from kivy.uix.slider import Slider
 from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import ScreenManager,Screen
+from kivy.lang.builder import Builder
 
-class MyGrid(GridLayout):
+global sm
+
+class MyGrid(Screen):
     ##self.display.text = self.outArray[self.posIndex]
     slidersp = ObjectProperty(None)
     sliderab = ObjectProperty(None)
@@ -45,20 +49,82 @@ class MyGrid(GridLayout):
     def showAbilities(self):
       text = ""
       abilityArray = CharacterInstance.showAbilities()
-      if int(self.sliderab.value) == 0:## add levels 1-4 etc
+      print(abilityArray)
+      if int(self.sliderab.value) == 0:## add levels 1-4 et
+        for i in abilityArray[0]:
+          text = text + i
+          text = text + "\n" * 2
+        print("Outputting 0th level abilities")
         return None
-      for i in abilityArray[int(self.sliderab.value)]:
-        text = text + i
-        text = text + "\n"
+      try:
+        for i in abilityArray[int(self.sliderab.value)]:
+          text = text + i
+          text = text + "\n" * 2
+      except:
+        pass
+      try:
+        for i in abilityArray[int(self.sliderab.value-2)]:
+          text = text + i
+          text = text + "\n" * 2
+      except:
+        pass
+      try:
+        for i in abilityArray[int(self.sliderab.value -3)]:
+          text = text + i
+          text = text + "\n" * 2
+      except:
+        pass
+      try:
+        for i in abilityArray[int(self.sliderab.value-4)]:
+          text = text + i
+          text = text + "\n" * 2
+
+      except:
+        pass
       self.display.text = text
 
+class MenuScreen(Screen):
+  def showCharacters(self):
+    Characters = loadCharacter()
+    ##add input methods
+    text = ""
+    count = 0
+    for i in Characters:
+      count += 1
+      text = text + str(count)
+      text = text + " - "
+      text = text + str(i)
+      self.display.text = text
+    texte = self.ids.input.text
+    print(texte)
+    textei = None
+    chartemp = None
+    try:
+      textei = int(texte)
+      print("Textei is ", textei)
+      chartemp = Characters[textei - 1]
+    except:
+      pass
+    if chartemp != None:
+      with open("Saves/" + chartemp,"rb") as f:
+        CharacterInstance = pickle.load(f)
+        print("Loaded", CharacterInstance)
+        sm.current = 'sheet'
 
 
 
 
 class CharacterSheet(App):
+
+  
+
   def build(self):
-    return MyGrid()
+    global sm
+    sm = ScreenManager()
+    sm.add_widget(MenuScreen(name='menu'))
+    sm.add_widget(MyGrid(name='sheet'))
+    sm.current = 'menu'
+    return sm
 
 
 
@@ -146,11 +212,7 @@ def loadCharacter():
     count = count + 1
     print(str(count) +"-"+ filename)
     dirlist.append(filename)
-  choice = int(input("Please input which character to load(1-" + str(len(dirlist)) + ")"))
-  choicef = dirlist[choice-1]
-  with open("Saves/" + choicef,"rb") as f:
-    loadedCha = pickle.load(f)
-  return loadedCha
+  return dirlist
 
     
 
@@ -183,13 +245,17 @@ classCache = loadClasses()
 ##testC = characterCreate(classCache)
 ##saveCharacter(testC)
 
-CharacterInstance = loadCharacter()
-CharacterInstance.levelUp(2, subclasses)
-saveCharacter(CharacterInstance)
-test = CharacterInstance.returnSpells(spellsCache)
-print(test)
-print(test[1].name)
+##CharacterInstance = loadCharacter()
+##temp = CharacterInstance.levelUp(2, subclasses)
+##saveCharacter(CharacterInstance)
+##test = CharacterInstance.returnSpells(spellsCache)
+
+CharacterInstance = None
+
+
+
 
 
 if __name__ == "__main__":
-  CharacterSheet().run()
+  mainApp = CharacterSheet()
+  mainApp.run()

@@ -70,6 +70,8 @@ class Player:
       choice = int(input("Please select which subclass from the above choice"))
       self.subclass = subclasses[choice-1]
       self.pc.abilities[2].append(self.subclass.abilities[0])
+    if level == 4:
+      return "ABSCORE"
     print(self.pc.abilities[level-1])
     for i in self.pc.playerchoice[level-1]:
         print(i)
@@ -88,6 +90,7 @@ class Player:
         self.toHitMod = self.toHitMod + mod
       if self.pc.playerchoice[level-1][choice][0] == "Z":
         self.pc.abilities[20].append(self.pc.playerchoice[level-1][choice])
+    return None
   def returnSpells(self,spellslist):
     highest = 0
     spells = []

@@ -78,3 +78,23 @@
                 id:exit
                 spacing:10
                 text: "exit"
+                on_press: root.manager.current = 'menu'
+
+<MenuScreen>
+    id: menu
+    display: chardisplay
+
+    GridLayout:
+        rows: 3
+        rows_minimum: {0:300,1:30,2:30}
+        cols_minimum: {0:300,1:30,2:30}
+        size_hint: 1, 1
+        Label:
+            text:"Press Load"
+            id: chardisplay
+        TextInput:
+            multiline: False
+            id: input
+        Button:
+            text: "Load Characters"
+            on_press: root.showCharacters()
