@@ -4,6 +4,10 @@
     rows:3
     padding:10
     spacing:10
+    namedisplay: name
+    xpdisplay: xp
+    hpdisplay: hp
+
 
     slidersp: slidersp
     sliderab: sliderab
@@ -92,12 +96,57 @@
         rows_minimum: {0:300,1:30,2:30}
         cols_minimum: {0:300,1:30,2:30}
         size_hint: 1, 1
-        Label:
-            text:"Press Load"
-            id: chardisplay
+        BoxLayout:
+            Label:
+                text:"Press Load"
+                id: chardisplay
+            Button:
+                text: "+"
+                font_size:32
+                on_press: root.manager.current = 'create'
         TextInput:
             multiline: False
             id: input
         Button:
             text: "Load Characters"
             on_press: root.showCharacters()
+
+<CreationScreen>
+    GridLayout:
+        rows: 7
+        cols: 2
+        Label:
+            text:"Strength"
+        TextInput:
+            multiline: False
+            id: strengthin
+        Label:
+            text:"Dexterity"
+        TextInput:
+            multiline: False
+            id: dexterityhin
+        Label:
+            text:"Constitution"
+        TextInput:
+            multiline: False
+            id: constitutionin
+        Label:
+            text:"Wisdom"
+        TextInput:
+            multiline: False
+            id: wisdomin
+        Label:
+            text:"Intelligence"
+        TextInput:
+            multiline: False
+            id: intelligencein
+        Label:
+            text:"Charisma"
+        TextInput:
+            multiline: False
+            id: charismain
+        Button:
+            text:"Confirm"
+        Label:
+            text:"/27"
+

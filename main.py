@@ -21,7 +21,13 @@ class MyGrid(Screen):
     ##self.display.text = self.outArray[self.posIndex]
     slidersp = ObjectProperty(None)
     sliderab = ObjectProperty(None)
+    namedisplay = ObjectProperty(None)
+    xpdisplay = ObjectProperty(None)
+    hpdisplay = ObjectProperty(None)
     def showSpells(self):
+      self.namedisplay.text = CharacterInstance.name
+      self.xpdisplay.text = str(CharacterInstance.xp)
+      self.hpdisplay.text = str(CharacterInstance.hp)
       print(self.slidersp.value)
       text = ""
       spellArray = CharacterInstance.returnSpells(spellsCache)
@@ -36,6 +42,7 @@ class MyGrid(Screen):
         text = text + "\n"
       '''
       for i in spellArray:
+        text = text + "\n"
         try:
           print("Spell level is ", i.level)
           print("Slider value is ", int(self.slidersp.value))
@@ -44,11 +51,14 @@ class MyGrid(Screen):
             text = text + ": "
             text = text + i.ability
             text = text + i.level
-            text = text + "\n"
         except:
           pass
       self.display.text = text
     def showAbilities(self):
+      self.namedisplay.text = CharacterInstance.name
+      self.xpdisplay.text = str(CharacterInstance.xp)
+      self.hpdisplay.text = str(CharacterInstance.hp)
+      CharacterInstance.levelUp(20,subclasses)
       text = ""
       abilityArray = CharacterInstance.showAbilities()
       print(abilityArray)
@@ -96,6 +106,7 @@ class MenuScreen(Screen):
       text = text + str(count)
       text = text + " - "
       text = text + str(i)
+      text = text + "\n"
       self.display.text = text
     texte = self.ids.input.text
     print(texte)
@@ -114,17 +125,19 @@ class MenuScreen(Screen):
         print("Loaded", CharacterInstance)
         sm.current = 'sheet'
 
+class CreationScreen(Screen):
+  pass
+
 
 
 
 class CharacterSheet(App):
 
-
-
   def build(self):
     global sm
     sm = ScreenManager()
     sm.add_widget(MenuScreen(name='menu'))
+    sm.add_widget(CreationScreen(name='create'))
     sm.add_widget(MyGrid(name='sheet'))
     sm.current = 'menu'
     return sm
@@ -136,6 +149,7 @@ def loadClasses():
   classArray = []
   for filename in os.listdir("Classes"):
     try:
+      print("Classes/" + filename + "/main")
       classArray.append(cha.loadClass("Classes/" + filename + "/main"))
     except:
       raise OSError(filename)
@@ -221,32 +235,11 @@ def loadCharacter():
 
 
 
-'''
-paladin = cha.loadClass("Classes/Paladin/test")
-erika = cha.Player(3000,10,[10,10,10,10,10,10],paladin,"test",[0,0,0,0,0,0],None)
-subclasses = cha.loadSubclass("Classes/Paladin/subclasses","Paladin")
-
-
-s = erika.toJSON()
-with open("saves","w") as f:
-  f.write(s)
-
-
-
-erika.levelUp(3,subclasses)
-erika.showAbilities()
-
-
-test = cha.loadSpells()
-print(len(test))
-print(test[125].ability)
-'''
 
 subclasses = cha.loadSubclass("Classes/Paladin/subclasses","Paladin")
 spellsCache = cha.loadSpells() ##caches the loaded spells
 classCache = loadClasses()
-##testC = characterCreate(classCache)
-##saveCharacter(testC)
+
 
 ##CharacterInstance = loadCharacter()
 ##temp = CharacterInstance.levelUp(2, subclasses)
@@ -254,6 +247,7 @@ classCache = loadClasses()
 ##test = CharacterInstance.returnSpells(spellsCache)
 
 CharacterInstance = None
+
 
 
 

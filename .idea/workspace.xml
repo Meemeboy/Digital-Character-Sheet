@@ -11,7 +11,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Character_Sheet.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="15" />
+      <option value="100" />
+      <option value="200" />
+    </hideBySeverity>
+    <option name="sortBySeverity" value="false" />
   </component>
   <component name="ProjectId" id="1gk8eN1mpHVOY2MEscFdbUMeGFM" />
   <component name="ProjectViewState">
@@ -71,22 +80,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1599555074685" />
-    <state width="1515" height="277" key="GridCell.Tab.0.bottom" timestamp="1599645101693">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1599734400588">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="277" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1599645101693" />
-    <state width="1515" height="277" key="GridCell.Tab.0.center" timestamp="1599645101693">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1599734400588" />
+    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1599734400588">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="277" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1599645101693" />
-    <state width="1515" height="277" key="GridCell.Tab.0.left" timestamp="1599645101693">
+    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1599734400588" />
+    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1599734400588">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="277" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1599645101693" />
-    <state width="1515" height="277" key="GridCell.Tab.0.right" timestamp="1599645101693">
+    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1599734400588" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1599734400588">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="277" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1599645101693" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1599734400588" />
     <state width="1515" height="277" key="GridCell.Tab.1.bottom" timestamp="1599645101694">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -107,16 +116,5 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1599560400131" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>210</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
