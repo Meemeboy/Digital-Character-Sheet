@@ -124,7 +124,7 @@
             text:"Dexterity"
         TextInput:
             multiline: False
-            id: dexterityhin
+            id: dexterityin
         Label:
             text:"Constitution"
         TextInput:
@@ -147,6 +147,28 @@
             id: charismain
         Button:
             text:"Confirm"
+            on_press:stats = root.assignStats()
         Label:
             text:"/27"
 
+<PersonalScreen>
+    entry: entry
+    GridLayout:
+        cols:2
+        rows:4
+        Label:
+            text:"Select Class"
+            id: entry
+        TextInput:
+            id: classin
+            multiline: False
+        Label:
+            text:"Name:"
+        TextInput:
+            multiline: False
+            id: namein
+        Label:
+            text:""
+        Button:
+            text:"Hello"
+            on_press: root.selectClass()

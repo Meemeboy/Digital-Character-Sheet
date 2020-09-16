@@ -16,6 +16,8 @@ from kivy.graphics.svg import Svg
 
 global sm
 global CharacterInstance
+global classCache
+global stats
 
 class MyGrid(Screen):
     ##self.display.text = self.outArray[self.posIndex]
@@ -24,10 +26,13 @@ class MyGrid(Screen):
     namedisplay = ObjectProperty(None)
     xpdisplay = ObjectProperty(None)
     hpdisplay = ObjectProperty(None)
-    def showSpells(self):
+
+    def on_pre_enter(self, *args):
       self.namedisplay.text = CharacterInstance.name
       self.xpdisplay.text = str(CharacterInstance.xp)
       self.hpdisplay.text = str(CharacterInstance.hp)
+
+    def showSpells(self):
       print(self.slidersp.value)
       text = ""
       spellArray = CharacterInstance.returnSpells(spellsCache)
@@ -58,7 +63,7 @@ class MyGrid(Screen):
       self.namedisplay.text = CharacterInstance.name
       self.xpdisplay.text = str(CharacterInstance.xp)
       self.hpdisplay.text = str(CharacterInstance.hp)
-      CharacterInstance.levelUp(20,subclasses)
+      ##CharacterInstance.levelUp(20,subclasses)
       text = ""
       abilityArray = CharacterInstance.showAbilities()
       print(abilityArray)
@@ -126,7 +131,50 @@ class MenuScreen(Screen):
         sm.current = 'sheet'
 
 class CreationScreen(Screen):
-  pass
+  def assignStats(self):
+    global stats
+    stats = [8,8,8,8,8,8]
+    strengthval = int(self.ids.strengthin.text)
+    dexval = int(self.ids.dexterityin.text)
+    conval = int(self.ids.constitutionin.text)
+    intval = int(self.ids.intelligencein.text)
+    wisval = int(self.ids.wisdomin.text)
+    charval = int(self.ids.charismain.text)
+    if strengthval + dexval + conval + intval + wisval + charval <= 27 and strengthval < 8 and dexval < 8 and conval < 8 and wisval < 8 and intval < 8 and charval < 8:
+      stats[0] += strengthval
+      stats[1] += dexval
+      stats[2] += conval
+      stats[3] += intval
+      stats[4] +=wisval
+      stats[5] += charval
+      print("SUCCESS")
+      sm.current = 'personal'  ##next screen
+      return stats
+    return None
+
+
+class PersonalScreen(Screen):
+  entry = ObjectProperty(None)
+  state = False
+  def selectClass(self):
+    text = ""
+    count = 0
+    for i in classCache:
+      count += 1
+      text = text + str(count) + " " + i.name
+    self.entry.text = text
+    if self.state == False:
+      self.state = True
+      return None
+    try:
+      classChoice = classCache[int(self.ids.classin.text) - 1]
+    except:
+      pass
+    name = self.ids.namein.text
+    CharacterInstance = cha.Player(0,0,stats,classChoice,"Replace",[0,0,0,0,0,0],None,[],name)
+    print(CharacterInstance.name, "Is Complete")
+    saveCharacter(CharacterInstance)
+    sm.current = 'menu'
 
 
 
@@ -138,6 +186,7 @@ class CharacterSheet(App):
     sm = ScreenManager()
     sm.add_widget(MenuScreen(name='menu'))
     sm.add_widget(CreationScreen(name='create'))
+    sm.add_widget(PersonalScreen(name='personal'))
     sm.add_widget(MyGrid(name='sheet'))
     sm.current = 'menu'
     return sm
@@ -175,7 +224,7 @@ def createStats():
         statName = "Charisma"
       while True:
         print("You have",stats[i],"points in ",statName)
-        choice = int(input("What would you like to add in " + statName))
+
         if choice > points:
           print("Not enoigh points")
         else:
