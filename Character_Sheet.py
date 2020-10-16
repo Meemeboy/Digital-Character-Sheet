@@ -53,7 +53,7 @@ class Player:
       output.append(self.pc.abilities[i])
       print("ADded",self.pc.abilities[i])
     output.append(self.pc.abilities[20])
-    return output
+    return outputS
   def levelStat(self):
     print("1-Strength \n2-Dexterity \n3-Constitution \n4-Intelligence \n5-Wisdom \n6-Charisma")
     choice1 = int(input("What stat would you like to increase?(1-6)"))
@@ -100,10 +100,15 @@ class Player:
     count = 0
     level = self.returnLevel()
     secondarySpell = [2,5,9,13,17]
-    for i in secondarySpell:
+    primarySpell = [1,3,5,7,9,11,13,15,17]
+    if self.pc.spells[7] == "":
+      a = secondarySpell
+    else:
+      a = primarySpell
+    for i in a:
       if level < i:
         break
-      highest = secondarySpell.index(i)
+      highest = a.index(i)
     for j in range(highest + 2):
       spells.append(self.pc.spells[j])
     for i in spells:
@@ -187,11 +192,7 @@ def loadClass(filename):
     name = f.readline()
   return PlayerClass(hitdice,saving,skills,abilities,spells,playeractions,name)
 
-def createClass():
-  try:
-    hitdice = int(input("input the class' hitdice(e.g.6"))
-  except:
-    raise TypeError
+
 
 
 

@@ -29,10 +29,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\girat\Unity Projects\RTS-Game\Digital-Character-Sheet" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\girat\Unity Projects\RTS-Game\Digital-Character-Sheet" />
     </key>
   </component>
@@ -80,22 +84,22 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="541" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1599555074685" />
-    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1600245469951">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom" timestamp="1601981668756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1600245469951" />
-    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1600245469951">
+    <state width="1515" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1601981668756" />
+    <state width="1515" height="223" key="GridCell.Tab.0.center" timestamp="1601981668756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1600245469951" />
-    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1600245469951">
+    <state width="1515" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1601981668756" />
+    <state width="1515" height="223" key="GridCell.Tab.0.left" timestamp="1601981668756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1600245469951" />
-    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1600245469951">
+    <state width="1515" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1601981668756" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right" timestamp="1601981668756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1600245469951" />
+    <state width="1515" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1601981668756" />
     <state width="1515" height="277" key="GridCell.Tab.1.bottom" timestamp="1599645101694">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

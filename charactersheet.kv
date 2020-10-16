@@ -47,19 +47,19 @@
             size_hint: 0.5, 0.5
             Button:
                 spacing:10
-                text:"✨"
+                text:"Abilities"
                 on_press: root.showAbilities()
                 font_size: 32
             Button:
                 spacing:10
                 id: spells
                 on_press: root.showSpells()
-                text:"🧙"
+                text:"Spells"
                 font_size: 32
             Button:
                 spacing:10
                 id: equipment
-                text:"⚔"
+                text:"Equipment"
                 font_size: 32
             GridLayout:
                 rows: 2
@@ -117,34 +117,70 @@
         cols: 2
         Label:
             text:"Strength"
-        TextInput:
-            multiline: False
-            id: strengthin
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + strengthin.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: strengthin
         Label:
             text:"Dexterity"
-        TextInput:
-            multiline: False
-            id: dexterityin
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + dexterityin.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: dexterityin
         Label:
             text:"Constitution"
-        TextInput:
-            multiline: False
-            id: constitutionin
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + constitutionin.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: constitutionin
         Label:
             text:"Wisdom"
-        TextInput:
-            multiline: False
-            id: wisdomin
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + wisdomin.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: wisdomin
         Label:
             text:"Intelligence"
-        TextInput:
-            multiline: False
-            id: intelligencein
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + intelligencein.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: intelligencein
         Label:
             text:"Charisma"
-        TextInput:
-            multiline: False
-            id: charismain
+        GridLayout:
+            rows:2
+            Label:
+                text: str(8 + charismain.value)
+            Slider:
+                min:0
+                max:7
+                step: 1
+                id: charismain
         Button:
             text:"Confirm"
             on_press:stats = root.assignStats()

@@ -101,11 +101,27 @@ class MyGrid(Screen):
       self.display.text = text
 
 class MenuScreen(Screen):
+  def on_pre_enter(self, *args):
+    Characters = loadCharacter()
+    ##add input methods
+    text = ""
+    count = 0
+
+    for i in Characters:
+      count += 1
+      text = text + str(count)
+      text = text + " - "
+      text = text + str(i)
+      text = text + "\n"
+      self.display.text = text
+    texte = self.ids.input.text
+
   def showCharacters(self):
     Characters = loadCharacter()
     ##add input methods
     text = ""
     count = 0
+
     for i in Characters:
       count += 1
       text = text + str(count)
@@ -134,12 +150,12 @@ class CreationScreen(Screen):
   def assignStats(self):
     global stats
     stats = [8,8,8,8,8,8]
-    strengthval = int(self.ids.strengthin.text)
-    dexval = int(self.ids.dexterityin.text)
-    conval = int(self.ids.constitutionin.text)
-    intval = int(self.ids.intelligencein.text)
-    wisval = int(self.ids.wisdomin.text)
-    charval = int(self.ids.charismain.text)
+    strengthval = int(self.ids.strengthin.value)
+    dexval = int(self.ids.dexterityin.value)
+    conval = int(self.ids.constitutionin.value)
+    intval = int(self.ids.intelligencein.value)
+    wisval = int(self.ids.wisdomin.value)
+    charval = int(self.ids.charismain.value)
     if strengthval + dexval + conval + intval + wisval + charval <= 27 and strengthval < 8 and dexval < 8 and conval < 8 and wisval < 8 and intval < 8 and charval < 8:
       stats[0] += strengthval
       stats[1] += dexval
