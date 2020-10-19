@@ -53,7 +53,7 @@ class Player:
       output.append(self.pc.abilities[i])
       print("ADded",self.pc.abilities[i])
     output.append(self.pc.abilities[20])
-    return outputS
+    return output
   def levelStat(self):
     print("1-Strength \n2-Dexterity \n3-Constitution \n4-Intelligence \n5-Wisdom \n6-Charisma")
     choice1 = int(input("What stat would you like to increase?(1-6)"))
@@ -66,33 +66,6 @@ class Player:
   def levelUp(self,level,subclasses):
     xpamounts = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000,195000, 225000, 265000, 305000, 355000]
     self.xp = xpamounts[level - 1]
-    if level == 3:
-      yeet = os.listdir("Classes/"+self.pc.name+"/subclasses")## replace with correct class
-      print(yeet)
-      choice = int(input("Please select which subclass from the above choice"))
-      self.subclass = subclasses[choice-1]
-      self.pc.abilities[2].append(self.subclass.abilities[0])
-    if level == 4:
-      return "ABSCORE"
-    print(self.pc.abilities[level-1])
-    for i in self.pc.playerchoice[level-1]:
-        print(i)
-        print("\n")
-    if self.pc.playerchoice[level-1][0] == "CHS1":
-      choices = 1
-    else:
-      choices = 0
-    for i in range(choices):
-      choice = int(input("Please select an option from the above choices(num)"))
-      if self.pc.playerchoice[level-1][choice][0] == "A":
-        mod = int(self.pc.playerchoice[level-1][choice][2])
-        self.acMod = self.acMod + mod
-      if self.pc.playerchoice[level-1][choice][0] == "H":
-        mod = int(self.pc.playerchoice[level-1][choice][2]) ##Finds modifier from string
-        self.toHitMod = self.toHitMod + mod
-      if self.pc.playerchoice[level-1][choice][0] == "Z":
-        self.pc.abilities[20].append(self.pc.playerchoice[level-1][choice])
-    return None
   def returnSpells(self,spellslist):
     highest = 0
     spells = []
@@ -101,14 +74,14 @@ class Player:
     level = self.returnLevel()
     secondarySpell = [2,5,9,13,17]
     primarySpell = [1,3,5,7,9,11,13,15,17]
-    if self.pc.spells[7] == "":
+    if self.pc.spells[7] == "": ## Checks whether the character is a primary or secondary spell caster
       a = secondarySpell
     else:
       a = primarySpell
     for i in a:
       if level < i:
         break
-      highest = a.index(i)
+      highest = a.index(i) ## Checks the heighest level spell the user can use
     for j in range(highest + 2):
       spells.append(self.pc.spells[j])
     for i in spells:
@@ -120,7 +93,7 @@ class Player:
     for i in outspells:
       for j in spellslist:
         if i == j.name:
-          print("replacing ", i, " with ", j.name)
+          print("replacing ", i, " with ", j.name)## OLD SOLUTIOND
           outspells[count] = j
           continue
       count += 1
