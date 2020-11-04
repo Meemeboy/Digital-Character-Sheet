@@ -26,6 +26,7 @@ class MyGrid(Screen):
     namedisplay = ObjectProperty(None)
     xpdisplay = ObjectProperty(None)
     hpdisplay = ObjectProperty(None)
+    sliderle = ObjectProperty(None)
 
     def on_pre_enter(self, *args):
       self.namedisplay.text = CharacterInstance.name
@@ -36,18 +37,7 @@ class MyGrid(Screen):
       print(self.slidersp.value)
       text = ""
       spellArray = CharacterInstance.returnSpells(spellsCache)
-      '''
       for i in spellArray:
-        try:
-          text = text + i.name
-          text = text + ": "
-          text = text + i.ability
-        except:
-          pass
-        text = text + "\n"
-      '''
-      for i in spellArray:
-        text = text + "\n"
         try:
           print("Spell level is ", i.level)
           print("Slider value is ", int(self.slidersp.value))
@@ -56,25 +46,25 @@ class MyGrid(Screen):
             text = text + ": "
             text = text + i.ability
             text = text + i.level
+            text = text + "\n"
         except:
           pass
       self.display.text = text
     def showAbilities(self):
       self.namedisplay.text = CharacterInstance.name
       self.xpdisplay.text = str(CharacterInstance.xp)
-      self.hpdisplay.text = str(CharacterInstance.hp)
-      ##CharacterInstance.levelUp(20,subclasses)
+      self.hpdisplay.text = str(CharacterInstance.hp)## Updates top info
       text = ""
-      abilityArray = CharacterInstance.showAbilities()
+      abilityArray = CharacterInstance.showAbilities() ##fetches abilities from class
       print(abilityArray)
-      if int(self.sliderab.value) == 0:## add levels 1-4 et
+      if int(self.sliderab.value) == 0:## outputs inate abilities of character
         for i in abilityArray[0]:
           text = text + i
           text = text + "\n" * 2
         print("Outputting 0th level abilities")
-        return None
+        return None ## exits function
       try:
-        for i in abilityArray[int(self.sliderab.value)]:
+        for i in abilityArray[int(self.sliderab.value)]: ## adds each level's abilities
           text = text + i
           text = text + "\n" * 2
       except:
@@ -99,6 +89,10 @@ class MyGrid(Screen):
       except:
         pass
       self.display.text = text
+    def levelUp(self):
+      if int(self.sliderle.value) != 0:
+        CharacterInstance.levelUp(int(self.sliderle.value),subclasses)
+        saveCharacter(CharacterInstance)
 
 class MenuScreen(Screen):
   def on_pre_enter(self, *args):
@@ -172,6 +166,9 @@ class CreationScreen(Screen):
 class PersonalScreen(Screen):
   entry = ObjectProperty(None)
   state = False
+
+  def on_pre_enter(self, *args):
+    self.selectClass()
   def selectClass(self):
     text = ""
     count = 0
@@ -185,8 +182,10 @@ class PersonalScreen(Screen):
     try:
       classChoice = classCache[int(self.ids.classin.text) - 1]
     except:
-      pass
+      return None
     name = self.ids.namein.text
+    if name == "":
+      return None
     CharacterInstance = cha.Player(0,0,stats,classChoice,"Replace",[0,0,0,0,0,0],None,[],name)
     print(CharacterInstance.name, "Is Complete")
     saveCharacter(CharacterInstance)
@@ -296,28 +295,11 @@ def loadCharacter():
     dirlist.append(filename)
   return dirlist
 
-    
-
-
-
 
 subclasses = cha.loadSubclass("Classes/Paladin/subclasses","Paladin")
 spellsCache = cha.loadSpells() ##caches the loaded spells
 classCache = loadClasses()
-
-
-##CharacterInstance = loadCharacter()
-##temp = CharacterInstance.levelUp(2, subclasses)
-##saveCharacter(CharacterInstance)
-##test = CharacterInstance.returnSpells(spellsCache)
-
 CharacterInstance = None
-
-
-
-
-
-
 if __name__ == "__main__":
   mainApp = CharacterSheet()
   mainApp.run()
